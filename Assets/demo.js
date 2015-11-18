@@ -62,8 +62,8 @@ function calculateScore (ai_data:PlayerData, enemies:PlayerData[]) {
 	for (i = 0; i < ai_data.reachable_coords.Length; i++) {
 		var current_reachable_coord = ai_data.reachable_coords[i];
 		scores[i] = current_reachable_coord; // convert Vector3 to Vector4 implicitly.
-		var attack_detail = AttackDetail.buildFromParams(1, current_reachable_coord, 'scope', 3, 'single', 1); // TODO need to think over what id is for.
-		Debug.Log(attack_detail.start_coords);
+		var perform_detail = PerformDetail.buildFromParams(1, current_reachable_coord, 'scope', 3, 'single', 1); // TODO need to think over what id is for.
+		Debug.Log(perform_detail.start_coords);
 		
 		
 		// evaluate attack score

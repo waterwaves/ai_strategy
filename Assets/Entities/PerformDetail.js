@@ -1,27 +1,27 @@
 ﻿#pragma strict
 
-class AttackDetail {
+class PerformDetail {
 
 	var id :int;
 	var start_coords :Vector3[]; // all possible relative action start coords (length can be 0)
-	var attack_pattern :String;
-	var attack_scope :int;
+	var perform_pattern :String;
+	var perform_scope :int;
 	
 		
 	static public function buildFromParams (
 		id:int, 
 		start_coord:Vector3, render_pattern:String, render_scope:int,
-		attack_pattern:String, attack_scope:int
+		perform_pattern:String, perform_scope:int
 	) {
-		return new AttackDetail(id, new Vector3[0], start_coord, render_pattern, render_scope, Vector3.zero, attack_pattern, attack_scope);
+		return new PerformDetail(id, new Vector3[0], start_coord, render_pattern, render_scope, Vector3.zero, perform_pattern, perform_scope);
 	}
 	
 	static public function buildFromGiven (
 		id:int,
 		start_coords:Vector3[],
-		attack_pattern:String, attack_scope:int
+		perform_pattern:String, perform_scope:int
 	) {
-		return new AttackDetail(id, start_coords, Vector3.zero, '', 0, Vector3.zero, attack_pattern, attack_scope);
+		return new PerformDetail(id, start_coords, Vector3.zero, '', 0, Vector3.zero, perform_pattern, perform_scope);
 	}
 
 
@@ -29,14 +29,14 @@ class AttackDetail {
 	//	var render_pattern :String; // HOW to render start_coords
 	//	var render_scope :int; // how MANY to render start_coords, ***including*** start_coord (1)
 	//	var render_direction :Vector3; // VERY RARE, render start_coords direction
-	function AttackDetail (
+	function PerformDetail (
 		id:int, 
 		start_coords:Vector3[], start_coord:Vector3, render_pattern:String, render_scope:int, render_direction:Vector3, // either start_coords or the other 4
-		attack_pattern:String, attack_scope:int
+		perform_pattern:String, perform_scope:int
 	) {
 		this.id = id;
-		this.attack_pattern = attack_pattern;
-		this.attack_scope = attack_scope;
+		this.perform_pattern = perform_pattern;
+		this.perform_scope = perform_scope;
 		if (start_coords.Length > 0) {
 			this.start_coords = start_coords;
 		} else {
