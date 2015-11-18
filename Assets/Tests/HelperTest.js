@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 function Start () {
-	Helpers.skillCategoriesFromCSV('Assets/Data/performs.csv');
+	Helpers.skillCategoriesFromCSV('Assets/Data/skill_categories.csv');
 }
 
 function Update () {
