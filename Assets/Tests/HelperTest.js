@@ -1,7 +1,8 @@
 ﻿#pragma strict
 
 function Start () {
-	Helpers.skillCategoriesFromCSV('Assets/Data/skill_categories.csv');
+	var skill_categories = Helpers.skillCategoriesFromCSV('Assets/Data/skill_categories.csv');
+	Debug.Log(skill_categories);
 }
 
 function Update () {

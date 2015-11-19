@@ -30,7 +30,6 @@ class PlayerData extends System.ValueType {
 }
 
 function Start () {
-	Debug.Log('hello');
 	// create an AI data
 	var ai_data:PlayerData = new PlayerData();
 	ai_data.coord = Vector3(4,5,0);
@@ -68,40 +67,10 @@ function calculateScore (ai_data:PlayerData, enemies:PlayerData[]) {
 		
 		// evaluate attack score
 		// get attack coords
-//		attackCoords()
-//		attackScore()
 	}
 	Debug.Log(scores);
 }
 
-
-/*
-	start_coord: the first/center coord that gets attacked.
-	attack_pattern: `single`, `line`, `scope`
-	attack_scope: counted with the start_coord included.
-*/
-function attackCoords (start_coord:Vector3, attack_pattern:String, attack_scope:int, attack_direction: Vector3) : Vector3[]{
-	var coords:Vector3[];
-	if (attack_pattern == 'single') {
-		coords = new Vector3[1];
-		coords[0] = start_coord;
-	}
-	if (coords == null) {
-		coords = new Vector3[0];
-	}
-	return coords;
-}
-function attackScore (attack_coords:Vector3[], enemies:PlayerData[]) {
-	var i:int;
-	for (i = 0; i < attack_coords.Length; i++) {
-		
-	}
-	var a = Vector3(2, 2, 1);
-	var b = Vector3(2, 2, 1);
-	var c = a == b;
-	Debug.Log(c);
-	
-}
 
 
 
