@@ -6,22 +6,14 @@ class PerformDetail {
 	var start_coords :Vector3[]; // all possible relative action start coords (length can be 0)
 	var perform_pattern :String;
 	var perform_scope :int;
-	
-		
+
+
 	static public function buildFromParams (
 		id:int, 
 		start_coord:Vector3, render_pattern:String, render_scope:int,
 		perform_pattern:String, perform_scope:int
 	) {
 		return new PerformDetail(id, new Vector3[0], start_coord, render_pattern, render_scope, Vector3.zero, perform_pattern, perform_scope);
-	}
-	
-	static public function buildFromGiven (
-		id:int,
-		start_coords:Vector3[],
-		perform_pattern:String, perform_scope:int
-	) {
-		return new PerformDetail(id, start_coords, Vector3.zero, '', 0, Vector3.zero, perform_pattern, perform_scope);
 	}
 
 

@@ -1,5 +1,11 @@
 #pragma strict
 
+/*
+	Determines the scope of skill selection and scope of skill perform.
+	- Relative to mouse coord.
+	- This will be stored in a Hashtable, in which `id` is the key
+	  [see `loadSkillCategoriesFromCSV`].
+*/
 class SkillCategory {
 	var id :int;
 	var name :String;
@@ -13,7 +19,10 @@ class SkillCategory {
 		this.perform_coords = perform_coords;
 	}
 
-	static function readFromCSV (data:String[]) :SkillCategory{
+	/*
+		Converts a String[] into a skillCategory object.
+	*/
+	static function createFromCSVRow (data:String[]) :SkillCategory{
 		var id = int.Parse(data[0]);
 		var name = data[1];
 		var trigger_coords :Vector3[];
@@ -51,5 +60,16 @@ class SkillCategory {
 		return new SkillCategory(id, name, trigger_coords, perform_coords);
 	}
 
-
+	/*
+		Outputs/Loads a set of skillCategories (Hashtable), where `id` is key.
+	*/
+	static function loadSkillCategoriesFromCSV (path:String) :Hashtable {
+		var data = Helpers.csvReader(path);
+		var skillCategories = new Hashtable();
+		for (var skillcategory_data in data) {
+			var skillCategory = SkillCategory.createFromCSVRow(skillcategory_data);
+			skillCategories.Add(skillCategory.id, skillCategory);
+		}
+		return skillCategories;
+	}
 }

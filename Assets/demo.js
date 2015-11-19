@@ -15,8 +15,10 @@ import System.Collections.Generic;
 				{"x": 4, "y": 4},
 				{"x": 3, "y": 5},
 				{"x": 4, "y": 6}
+			],
+			"skills": [
+				1
 			]
-
 		}
 	]
 }
@@ -71,6 +73,6 @@ function calculateScore (ai_data:PlayerData, enemies:PlayerData[]) {
 	Debug.Log(scores);
 }
 
-
+// TODO move this to a reasonable class
 
 

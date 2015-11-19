@@ -2,9 +2,11 @@
 
 class Helpers {
 	/*
-		Simply parse csv file and render/return String[][]
-		- # is a escapor
+		Simply parse csv file and render/return a List of String[]
+		- starting of # is an escaper of the line
 		- empty line doesn't not count
+		@path: a directory related to game root directory.
+		  Date should be in Assets/Data/ .
 	*/
 	static function csvReader (path:String) :List.<String[]> {
 		var fileData : String  = System.IO.File.ReadAllText(path);
@@ -24,24 +26,13 @@ class Helpers {
 		return data;
 	}
 
-	static function skillCategoriesFromCSV (path:String) :Hashtable {
-		var data = csvReader(path);
-		var skillCategories = new Hashtable();
-		for (var skillcategory_data in data) {
-
-			var skillCategory = SkillCategory.readFromCSV(skillcategory_data);
-			skillCategories.Add(skillCategory.id, skillCategory);
-		}
-		return skillCategories;
-	}
-
 	/*
-		Gets coords from a set of variables, including type, scope, and direction;
-		We can also simply pass `coords` through.
-		type: 'scope', 'line', etc
-		scope: includes the start point (>=1)
+		Gets coords from a set of variables, including @type, @scope, and @direction;
+		We can also simply pass @coords through.
+		@type: 'scope', 'line', etc
+		@scope: includes the start point (>=1)
 	*/
-	static function getRelativeCoordsFromParams (coords:Vector3[], type:String, scope:int, direction:Vector3) {
+	static function getRelativeCoordsFromParams (coords:Vector3[], type:String, scope:int, direction:Vector3) :Vector3[] {
 		if (coords.Length > 0) {
 			return coords;
 		}
@@ -78,6 +69,17 @@ class Helpers {
 			}
 			return relativeCoords;
 		}
+		
+		// By default, we return empty Vector3[].
+		return new Vector3[0];
+	}
+
+	static function convertRelToAbsCoords (given_coord:Vector3, rel_coords:Vector3[]) :Vector3[] {
+		var abs_coords = new Vector3[rel_coords.Length];
+		for (var i = 0; i < rel_coords.Length; i++) {
+			abs_coords[i] = rel_coords[i] + given_coord;
+		}
+		return abs_coords;
 	}
 
 	/*
@@ -87,4 +89,6 @@ class Helpers {
 	static function getVector3FromString (str:String) {
 		return new Vector3[1];
 	}
+	
+	
 }
